@@ -1,18 +1,14 @@
-# Algorithms_Project
+DAA Project
 
 Implemented Convex Hull, Onion Hull and Skylines with Convex hulls
 
-## Requirements:
-Python 3, Numpy, matplotlib, Pandas
+Requirements:
+    Python 3, Numpy, matplotlib, Pandas
 
-## Running Instructions:
+Running Instructions:
+    python main.py -T <type> -F <sample_file_name>
 
-```
-python main.py -T <type> -F <sample_file_name>
-
-```
-
-### Arguments:
+Arguments:
 T - Type of Run to make
 
     1 For running only the convex hull algorithms
@@ -23,7 +19,6 @@ T - Type of Run to make
 
 F - Input sample file name defaults to a sample file in Input folder, for circle detector the data is generated on the fly.
 
-#### Outputs are stored in the Outputs folder
-
-## Experiment
+Outputs are stored in the Outputs folder
+Experiment
 Developed a Circle detector based on convex hull, predicts if the given set of points forms a circle or not.

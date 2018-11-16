@@ -15,12 +15,14 @@ class GrahamScan(object):
                 minX = min(minYs[:,0])
                 return [x for x in minYs if x[0] == minX][0]
 
+
         def polarAngle(self,a,b):
             a1 = np.asarray(a)
             b1 = np.asarray(b)
             if(np.array_equal(a1,b1)):
                 return 0
             return math.atan2(b[1]-a[1],b[0]-a[0])
+
 
         def getCrossProduct(self, a, b, c):
             y1 = b[1]- a[1];
@@ -30,6 +32,7 @@ class GrahamScan(object):
             x2 = c[0] - a[0];
             val = x1 * y2 - x2 * y1;
             return val
+
 
         def sortByPolarAngle(self, a, points):
             angle_points = dict()
@@ -44,11 +47,6 @@ class GrahamScan(object):
             points = sorted(points, key=lambda x: self.polarAngle(a, x))
             return points
 
-#        def test(self,a,points):
-#            ordered = OrderedDict(sorted(points, key=lambda x: self.polarAngle(a, x)))
-#            for key, value in ordered.items():
-#                print(key, value)
-#            return ordered
 
         def getNextToTop(self,stack):
             top = stack.pop()
@@ -67,6 +65,7 @@ class GrahamScan(object):
             plt.plot(hull[:, 0], hull[:, 1])
             plt.show()
 
+
         def driver(self):
             self.initial_point = self.getInitialPoint()
             points = self.sortByPolarAngle(self.initial_point, self.input)
@@ -82,6 +81,7 @@ class GrahamScan(object):
                     stack.append(x)
             hull = stack[::-1]
             self.hull = np.asarray(hull)
+
 
         def fit(self, input):
             self.input = input

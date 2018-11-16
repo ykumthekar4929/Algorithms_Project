@@ -55,7 +55,7 @@ class SkyLine(object):
 
                 final_skyline= np.unique(skylines, axis = 0)
                 final_skyline = sorted(final_skyline, key = lambda k: [k[1], k[0]])
-                self.skyline = final_skyline
+                self.skyline = np.asarray(final_skyline)
 
 
         def match(self, points):

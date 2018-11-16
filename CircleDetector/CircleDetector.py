@@ -19,7 +19,6 @@ class CircleDetector(object):
                 return np.linalg.norm(a-b)
 
         def getCenter(self, a, b, c):
-                print ("=>", a, b, c)
                 xcv = (a[0] - b[0])
                 if xcv == 0:
                         xcv = 0.001
@@ -67,7 +66,6 @@ class CircleDetector(object):
                 top_cut = limits[0] + 1.5*iqr
                 inlier = [x for x in radiis if x > bottom_cut and x < top_cut]
                 return len(inlier)/len(radiis) *100
-
 
         def fit(self, points):
                 self.input = points

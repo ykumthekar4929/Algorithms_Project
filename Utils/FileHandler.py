@@ -18,7 +18,7 @@ def readFile(filename):
         return int(test_cases), np.array(points)
 
 
-def createTestFile(num, name = "Inputs/sample.txt"):
+def createTestFile(num, name = "Inputs/small_sample.txt"):
         f = open(name, "w+")
         f.write("%s\n"%(num))
         samples = InputGenerator.inputGenerator(num)
@@ -33,5 +33,5 @@ def createTestFile(num, name = "Inputs/sample.txt"):
 def saveOutput(name, hull):
         f = open(name, 'w+')
         for row in hull:
-                f.write("%s, %s, %s\n"%(row[2], row[0], row[1]))
+                f.write("%s\n"%(row))
         f.close()

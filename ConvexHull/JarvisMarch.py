@@ -16,8 +16,7 @@ class JarvisMarch(object):
                         min_Y = min(minX[:, 1])
                         minX = minX[np.where((minX[:, 1] == min_Y))]
                 return minX[0]
-                # minX = min(self.input[:,0])
-                # return [x for x in self.input if x[0] == minX][0]
+
 
         def getCrossProduct(self, a, b, c):
                 y1 = a[1] - b[1]
