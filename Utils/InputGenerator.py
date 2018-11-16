@@ -6,15 +6,16 @@ Created on Fri Nov  2 12:17:06 2018
 """
 
 import random
-# import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 import numpy as np
 
 def inputGenerator(samples):
-
     '''
+
         Input: samples int denoting number of samples
         Output: an array of shape (samples, 2) with range between - samples
         to samples
+
     '''
 
     rangeOfValues = (-samples, samples)
@@ -29,7 +30,26 @@ def inputGenerator(samples):
     return sampleSet
 
 
+def generateCircularData(num):
+        theta = np.linspace(0, 2*np.pi, num)
+        a, b = 1 * np.cos(theta), 1 * np.sin(theta)
+        r = np.random.rand((num))
+        x, y = r * np.cos(theta), r * np.sin(theta)
+        samples = []
+        for _ in range(num):
+                samples.append([x[_], y[_]])
+        return np.array(samples)
+        # plots
+        # plt.figure(figsize=(7,6))
+        # plt.plot(a, b, linestyle='-', linewidth=2, label='Circle')
+        # plt.plot(x, y, marker='o', linestyle='dashed', label='Samples')
+        # plt.ylim([-1.5,1.5])
+        # plt.xlim([-1.5,1.5])
+        # plt.grid()
+        # plt.legend(loc='upper right')
+        # plt.show(block=True)
+
 
 
 if __name__ == '__main__':
-        print (inputGenerator(100))
+        print (generateCircularData(100000))

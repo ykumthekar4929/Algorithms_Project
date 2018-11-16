@@ -20,7 +20,6 @@ class SkyLine(object):
         def plot(self):
                 plt.scatter(self.input[:, 0], self.input[:, 1], marker = '.')
                 plt.scatter(self.hull[:, 0], self.hull[:, 1], marker = "o")
-                # plt.scatter(self.skyline[:, 0], self.skyline[:, 1], marker = 's')
                 plt.show()
 
 
@@ -33,14 +32,12 @@ class SkyLine(object):
 
         def driver(self):
                 initial_point = self.getInitialPoint(self.hull)
-                print ("initial_point", initial_point)
-                print ("hull : ", self.hull)
                 hull = [x for x in self.hull if x[0] > initial_point[0]]
                 hull = np.asarray(hull)
-                print("filtered hull : ",hull)
+                if len(hull) == 0:
+                        np.vstack((hull, initial_point))
                 hullSorted = hull[hull[:,1].argsort()][::-1]
                 hullSorted = np.asarray(hullSorted)
-                print("sorted hull: ",hullSorted)
                 maxX = initial_point[0]
                 tempY=0
                 skylines = []
@@ -54,19 +51,12 @@ class SkyLine(object):
                         tempY = x[1]
                     elif((x[0] == maxX) and (x[1] > tempY)):
                         skylines.append(x)
-                        
-                #same_coordinate_points = np.where((hullSorted[:, 1] == hullSorted[0, 1]))
-                #maxY = hullSorted[0]
-                
-                #skylines = [x for x in hullSorted if(x[0] > initial_point[0] or x[1] > initial_point[1])]
-                
-                #final_skyline = np.append(skylines, initial_point, axis = 0)
-                #skylines.append(initial_point)
+
+
                 final_skyline= np.unique(skylines, axis = 0)
                 final_skyline = sorted(final_skyline, key = lambda k: [k[1], k[0]])
-                
-                print("skylines : ",np.asarray(final_skyline))      
-                self.plot()
+                self.skyline = final_skyline
+
 
         def match(self, points):
                 self.input = points
