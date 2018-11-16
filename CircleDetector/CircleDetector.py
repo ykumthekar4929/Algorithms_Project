@@ -3,6 +3,7 @@ import numpy as np
 from ConvexHull.JarvisMarch import JarvisMarch
 from ConvexHull.GrahamScan import GrahamScan
 from ConvexHull.QuickHull import QuickHull
+import matplotlib.pyplot as plt
 import time
 
 class CircleDetector(object):
@@ -11,6 +12,11 @@ class CircleDetector(object):
                 Returns True if the given set of points form a circle
 
         """
+        def plot(self):
+                plt.scatter(self.input[:, 0], self.input[:, 1], marker='.')
+                plt.scatter(self.hull[:, 0], self.hull[:, 1], marker='s')
+                # plt.show()
+                plt.savefig("Outputs/output_circle_detector.png")
 
         def get_center_point(self, a, b):
                 return [(b[0] - a[0])/2, (b[1] - a[1]/2)]

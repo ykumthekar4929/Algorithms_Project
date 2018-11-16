@@ -146,7 +146,8 @@ def run_circle_detector(samples):
         cd = CircleDetector(3)
         cd.fit(samples)
         res = cd.predict()
-        print (res)
+        print ("There is a %s chance that given points form a Circle"%(res))
+        cd.plot()
 
 
 def read_file(name):
@@ -164,8 +165,8 @@ def main(type, filename):
         samples = []
         if type == 4:
                 samples = generateCircularData(10000)
-                xcv = inputGenerator(500)
-                samples = np.vstack((samples, xcv))
+                xcv = inputGenerator(50)
+                # samples = np.vstack((samples, xcv))
         else:
                 samples = read_file(filename)
                 # samples = inputGenerator(40)
