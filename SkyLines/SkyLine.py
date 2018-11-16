@@ -34,6 +34,38 @@ class SkyLine(object):
         def driver(self):
                 initial_point = self.getInitialPoint(self.hull)
                 print ("initial_point", initial_point)
+                print ("hull : ", self.hull)
+                hull = [x for x in self.hull if x[0] > initial_point[0]]
+                hull = np.asarray(hull)
+                print("filtered hull : ",hull)
+                hullSorted = hull[hull[:,1].argsort()][::-1]
+                hullSorted = np.asarray(hullSorted)
+                print("sorted hull: ",hullSorted)
+                maxX = initial_point[0]
+                tempY=0
+                skylines = []
+                skylines.append(initial_point)
+                for x in hullSorted:
+                    if(x[1] == initial_point[1]):
+                        skylines.append(x)
+                    if(x[0] > maxX):
+                        skylines.append(x)
+                        maxX = x[0]
+                        tempY = x[1]
+                    elif((x[0] == maxX) and (x[1] > tempY)):
+                        skylines.append(x)
+                        
+                #same_coordinate_points = np.where((hullSorted[:, 1] == hullSorted[0, 1]))
+                #maxY = hullSorted[0]
+                
+                #skylines = [x for x in hullSorted if(x[0] > initial_point[0] or x[1] > initial_point[1])]
+                
+                #final_skyline = np.append(skylines, initial_point, axis = 0)
+                #skylines.append(initial_point)
+                final_skyline= np.unique(skylines, axis = 0)
+                final_skyline = sorted(final_skyline, key = lambda k: [k[1], k[0]])
+                
+                print("skylines : ",np.asarray(final_skyline))      
                 self.plot()
 
         def match(self, points):

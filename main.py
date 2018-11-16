@@ -59,10 +59,11 @@ def run_onion_hulls(samples):
 
 
 def run_skylines(samples):
-        sk = SkyLine(3)
+        sk = SkyLine(2)
         sk.match(samples)
 
 
-FileHandler.createTestFile(100000)
+FileHandler.createTestFile(10000)
 test_cases, samples = FileHandler.readFile('Inputs/sample.txt')
 run_hulls_only(samples)
+#run_skylines(samples)
