@@ -30,7 +30,7 @@ def inputGenerator(samples):
     return sampleSet
 
 
-def generateCircularData(num):
+def generateCircularData(num, error=0):
         theta = np.linspace(0, 2*np.pi, num)
         a, b = 1 * np.cos(theta), 1 * np.sin(theta)
         r = np.random.rand((num))
@@ -38,7 +38,8 @@ def generateCircularData(num):
         samples = []
         for _ in range(num):
                 samples.append([x[_], y[_]])
-        return np.array(samples)
+        wrongs = np.random.uniform(low=-0.5, high=1.5, size=(error, 2) )
+        return np.vstack((np.array(samples), wrongs))
         # plots
         # plt.figure(figsize=(7,6))
         # plt.plot(a, b, linestyle='-', linewidth=2, label='Circle')

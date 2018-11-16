@@ -164,7 +164,7 @@ def run_all(samples):
 def main(type, filename):
         samples = []
         if type == 4:
-                samples = generateCircularData(10000)
+                samples = generateCircularData(10000, error=5)
                 xcv = inputGenerator(50)
                 # samples = np.vstack((samples, xcv))
         else:
