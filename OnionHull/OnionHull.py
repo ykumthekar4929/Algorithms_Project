@@ -19,7 +19,7 @@ class OnionHull(object):
         """
 
         def plot(self):
-                import ipdb; ipdb.set_trace()
+                # import ipdb; ipdb.set_trace()
 
                 plt.scatter(self.input[:, 0], self.input[:, 1])
                 for hull in self.peels:

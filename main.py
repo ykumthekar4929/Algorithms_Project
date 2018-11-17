@@ -28,6 +28,7 @@ def run_hulls_only(samples):
         print("Saving output to - %s "%("Outputs/results_JarvisMarch.txt"))
         jm_result = sorted(jm.hull[:, 2])
         FileHandler.saveOutput("Outputs/results_JarvisMarch.txt", jm_result)
+        # jm.plotter(samples)
         times.append(jm.exec_time)
 
         gs = GrahamScan()
@@ -39,6 +40,7 @@ def run_hulls_only(samples):
         print("Hull(%s): " % len(gs.hull), gs.hull)
         print("Saving output to - %s "%("Outputs/results_GrahamScan.txt"))
         gs_result = sorted(gs.hull[:, 2])
+        # gs.plot(samples)
         FileHandler.saveOutput("Outputs/results_GrahamScan.txt", gs_result)
 
         times.append(gs.exec_time)
@@ -53,6 +55,7 @@ def run_hulls_only(samples):
         print("Saving output to - %s "%("Outputs/results_QuickHull.txt"))
         qh_result = sorted(qh.hull[:, 2])
         FileHandler.saveOutput("Outputs/results_QuickHull.txt", qh_result)
+        # qh.plot()
         times.append(qh.exec_time)
 
         return times
@@ -76,6 +79,7 @@ def run_onion_hulls(samples):
                 save_file = "Outputs/output_onion_%s.txt"%(names[x])
                 print("Saving output to - %s "%(save_file))
                 FileHandler.saveOutput(save_file, ax.peels)
+                # ax.plot()
                 times.append(ax.exec_time)
         return times
 

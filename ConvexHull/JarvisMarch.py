@@ -91,6 +91,7 @@ class JarvisMarch(object):
 
         def plotter(self, points):
                 plt.scatter(points[:, 0], points[:, 1])
+                plt.scatter(self.hull[:, 0], self.hull[:, 1])
                 plt.show()
 
         def fit(self, input):
